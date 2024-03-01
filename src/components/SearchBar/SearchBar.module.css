@@ -1,0 +1,26 @@
+.search-header {
+  text-align: center;
+}
+
+.search-form {
+  position: relative;
+}
+
+.search-container {
+  position: relative;
+  display: inline-block;
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.search-input {
+  padding-left: 30px;
+  padding-right: 10px;
+}
+
