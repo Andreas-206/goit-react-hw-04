@@ -1,19 +1,41 @@
-import Modal from "react-modal"
+// import Modal from "react-modal"
 
-const ImageModal = ({ image, onClose }) => {
-  return (
-    <Modal
-      isOpen={true}
-      onRequestClose={onClose}
-      contentLabel="Image Modal"
-      className="modal"
-      overlayClassName="overlay"
-    >
-      <div>
-        <img src="{image.urls.regular}" alt={image.alt_description} />
-      </div>
-    </Modal>
-  );
-};
+// const ImageModal = ({ isOpen,image, onClose }) => {
+//   return (
+//     <Modal
+//       isOpen={isOpen}
+//       onRequestClose={onClose}
+//       contentLabel="Image Modal"
+//       className="modal"
+//       overlayClassName="overlay"
+//     >
+//       <div>
+//         <img src="{image.urls.regular}" alt={image.alt_description} />
+//       </div>
+//     </Modal>
+//   );
+// };
+
+// export default ImageModal
+
+import Modal from 'react-modal'
+
+const ImageModal = ({ isOpen, image, onClose }) => {
+	return (
+		<Modal
+			isOpen={isOpen}
+			onRequestClose={onClose}
+			contentLabel='Image Modal'
+			className='modal'
+			overlayClassName='overlay'
+		>
+			<div>
+				{image && (
+					<img src={image.urls.regular} alt={image.alt_description} />
+				)}
+			</div>
+		</Modal>
+	)
+}
 
 export default ImageModal

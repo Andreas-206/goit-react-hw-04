@@ -1,34 +1,36 @@
-import { Formik, Form, Field } from 'formik'
-import { FaSearch } from 'react-icons/fa'
+import { FiSearch } from 'react-icons/fi'
+import { useState } from 'react'
+import style from './SearchBar.module.css'
 
 const SearchBar = ({ onSubmit }) => {
-	const initialValues = {
-		search: '',
-	}
+	const [query, setQuery] = useState('')
 
-	const handleSubmit = (values, { resetForm }) => {
-		onSubmit(values.search)
-		resetForm()
+	function handleSubmit(e) {
+		e.preventDefault()
+		if (query.trim() === '') {
+			alert('Please input valid query!')
+			return
+		}
+		onSubmit(query)
+		setQuery('')
 	}
 
 	return (
-		<header className='search-header'>
-			<Formik initialValues={initialValues} onSubmit={handleSubmit}>
-				<Form className='search-form'>
-					<div className='search-container'>
-						<FaSearch className='search-icon' />
-						<Field
-							type='text'
-							autoComplete='off'
-							placeholder='Search images and photos'
-							name='search'
-							className='search-input'
-						/>
-						{/* <button type='submit' className='search-button'></button> */}
-					</div>
-				</Form>
-			</Formik>
-		</header>
+		<form className={style.form} onSubmit={handleSubmit}>
+			<button className={style.button} type='submit'>
+				<FiSearch size='16px' />
+			</button>
+
+			<input
+				className={style.input}
+				placeholder='Search images and photos'
+				name='search'
+				value={query}
+				onChange={e => setQuery(e.target.value)}
+				required
+				autoFocus
+			/>
+		</form>
 	)
 }
 
