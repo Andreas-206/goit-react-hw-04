@@ -2,9 +2,9 @@ import css from './ImageCard.module.css'
 
 const ImageCard = ({ image, onClick }) => {
   return (
-		<li className={css.item}>
+		<li>
 			<div onClick={onClick}>
-				<img src={image.urls.small} alt={image.urls.description} className='item' />
+				<img src={image.urls.small} alt={image.urls.description} className={css.item} />
 			</div>
 		</li>
 	)
