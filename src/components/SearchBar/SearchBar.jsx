@@ -1,6 +1,6 @@
 import { FiSearch } from 'react-icons/fi'
 import { useState } from 'react'
-import toast from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import style from './SearchBar.module.css'
 
 const SearchBar = ({ onSubmit }) => {
@@ -17,21 +17,24 @@ const SearchBar = ({ onSubmit }) => {
 	}
 
 	return (
-		<form className={style.form} onSubmit={handleSubmit}>
-			<button className={style.button} type='submit'>
-				<FiSearch size='16px' />
-			</button>
+		<>
+			<form className={style.form} onSubmit={handleSubmit}>
+				<button className={style.button} type='submit'>
+					<FiSearch size='16px' />
+				</button>
 
-			<input
-				className={style.input}
-				placeholder='Search images and photos'
-				name='search'
-				value={query}
-				onChange={e => setQuery(e.target.value)}
-				required
-				autoFocus
-			/>
-		</form>
+				<input
+					className={style.input}
+					placeholder='Search images and photos'
+					name='search'
+					value={query}
+					onChange={e => setQuery(e.target.value)}
+					required
+					autoFocus
+				/>
+			</form>
+			<Toaster />
+		</>
 	)
 }
 
