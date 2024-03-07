@@ -1,6 +1,3 @@
-
-
-
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import SearchBar from './components/SearchBar/SearchBar'
@@ -73,14 +70,18 @@ const App = () => {
 	}
 
 	return (
-		<div className='container'>
-			<SearchBar onSubmit={handleSearch} />
-			{loading && <Loader />}
-			{error && <ErrorMessage message={error} />}
-			{images.length > 0 && (
-				<ImageGallery images={images} onImageClick={openModal} />
-			)}
-			{images.length > 0 && <LoadMoreBtn onLoadMore={handleLoadMore} />}
+		<>
+			<div className='container'>
+				<SearchBar onSubmit={handleSearch} />
+				{loading && <Loader />}
+				{error && <ErrorMessage message={error} />}
+				{images.length > 0 && (
+					<>
+						<ImageGallery images={images} onImageClick={openModal} />
+						<LoadMoreBtn onLoadMore={handleLoadMore} />
+					</>
+				)}
+			</div>
 			{selectedImage && (
 				<ImageModal
 					isOpen={modalIsOpen}
@@ -89,7 +90,7 @@ const App = () => {
 				/>
 			)}
 			<Toaster />
-		</div>
+		</>
 	)
 }
 
