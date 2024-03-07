@@ -1,5 +1,6 @@
 import { FiSearch } from 'react-icons/fi'
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 import style from './SearchBar.module.css'
 
 const SearchBar = ({ onSubmit }) => {
@@ -8,7 +9,7 @@ const SearchBar = ({ onSubmit }) => {
 	function handleSubmit(e) {
 		e.preventDefault()
 		if (query.trim() === '') {
-			alert('Please input valid query!')
+			toast.error('Please input valid query!')
 			return
 		}
 		onSubmit(query)

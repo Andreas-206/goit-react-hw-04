@@ -1,23 +1,3 @@
-// import Modal from "react-modal"
-
-// const ImageModal = ({ isOpen,image, onClose }) => {
-//   return (
-//     <Modal
-//       isOpen={isOpen}
-//       onRequestClose={onClose}
-//       contentLabel="Image Modal"
-//       className="modal"
-//       overlayClassName="overlay"
-//     >
-//       <div>
-//         <img src="{image.urls.regular}" alt={image.alt_description} />
-//       </div>
-//     </Modal>
-//   );
-// };
-
-// export default ImageModal
-
 import Modal from 'react-modal'
 import style from './ImageModal.module.css'
 
@@ -33,9 +13,10 @@ const ImageModal = ({ isOpen, image, onClose }) => {
 			overlayClassName={style.overlay}
 		>
 			<div>
-				{image && (
+				{image && image.urls.regular && image.alt_description && (
 					<img src={image.urls.regular} alt={image.alt_description} className={style.img} />
 				)}
+				{!image && <p>No image available</p>}
 			</div>
 		</Modal>
 	)
